@@ -27,6 +27,7 @@ dobMan = () => {
         input.setAttribute('type', 'datetime-local');
         input.setAttribute('style', 'display: block;');
         input.setAttribute('class', 'dt-input');
+        input.setAttribute('value', '2020-11-24T09:30');
         subBtn = document.createElement('button');
         subBtn.setAttribute('class', 'btn btn-primary');
         subBtn.innerHTML = 'Submit';
