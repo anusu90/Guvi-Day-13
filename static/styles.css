@@ -3,6 +3,14 @@
     padding: 0px;
 }
 
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
+
 .my-class-1{
     background-color: lightblue;
     min-height: 120px;
