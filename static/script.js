@@ -52,17 +52,21 @@ dobMan = () => {
             today = new Date()
             
             let miliDiff = today.getTime() - dt
-            let secDiff = Math.floor(miliDiff /1000);
-            let minDiff = Math.floor(secDiff / 60);
-            let dayDiff = Math.floor(miliDiff / (1000* 60 * 60 * 24));
-            let yearDiff = today.getFullYear() - dt.getFullYear()
-            let monthDiff = yearDiff * 12 + (today.getMonth() - dt.getMonth())
-            
-            
-            let st = `Age Gap is ${miliDiff} in ms, ${secDiff} in seconds, ${minDiff} in minutes, ${dayDiff} in days, ${monthDiff} in months and ${yearDiff} in years`;
-            
-            document.getElementById('display-text').innerHTML = st;
-            console.log(st);
+
+            if (miliDiff >=0){
+                let secDiff = Math.floor(miliDiff /1000);
+                let minDiff = Math.floor(secDiff / 60);
+                let dayDiff = Math.floor(miliDiff / (1000* 60 * 60 * 24));
+                let yearDiff = today.getFullYear() - dt.getFullYear()
+                let monthDiff = yearDiff * 12 + (today.getMonth() - dt.getMonth())
+                let st = `Age Gap is ${miliDiff} in ms, ${secDiff} in seconds, ${minDiff} in minutes, ${dayDiff} in days, ${monthDiff} in months and ${yearDiff} in years`;
+                document.getElementById('display-text').innerHTML = st;
+                console.log(st);
+            } else {
+                let st = "WE WILL NOT PREDICT FUTURE"
+                document.getElementById('display-text').innerHTML = st;
+                console.log(st);
+            }
         })
     })
 
