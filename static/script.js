@@ -21,17 +21,50 @@ displayRandom = () => {
 
 dobMan = () => {
     
-    document.getElementById('display-text').innerHTML = '';
+    let p = new Promise((resolve, reject)=> {
+        
+        let input = document.createElement('input');
+        input.setAttribute('type', 'datetime-local');
+        input.setAttribute('style', 'display: block;');
+        input.setAttribute('class', 'dt-input');
+        subBtn = document.createElement('button');
+        subBtn.setAttribute('class', 'btn btn-primary');
+        subBtn.innerHTML = 'Submit';
+        document.getElementById('display-text').innerHTML = '';
+        document.getElementById('display-text').append(input,subBtn);
+        
+        resolve(input);
+        
+    })
+    
 
-    let input = document.createElement('input');
-    input.setAttribute('type', 'datetime-local');
-    input.setAttribute('style', 'display: block;');
-    input.setAttribute('class', 'dt-input');
+    
+    p.then((i)=>{
+        
+        // dt = Date.parse(i.value)
 
-    subBtn = document.createElement('button')
-    subBtn.setAttribute('class', 'btn btn-primary')
-    subBtn.innerHTML = 'Submit'
-    document.getElementById('display-text').append(input,subBtn);
+        subBtn.addEventListener('click', ()=>{
+
+            // dt = Date.parse(i.value);
+
+            dt = new Date(i.value);
+            today = new Date()
+            
+            let miliDiff = today.getTime() - dt
+            let secDiff = Math.floor(miliDiff /1000);
+            let minDiff = Math.floor(secDiff / 60);
+            let dayDiff = Math.floor(miliDiff / (1000* 60 * 60 * 24));
+            let yearDiff = today.getFullYear() - dt.getFullYear()
+            let monthDiff = yearDiff * 12 + (today.getMonth() - dt.getMonth())
+            
+            
+            let st = `Age Gap is ${miliDiff} in ms, ${secDiff} in seconds, ${minDiff} in minutes, ${dayDiff} in days, ${monthDiff} in months and ${yearDiff} in years`;
+            
+            document.getElementById('display-text').innerHTML = st;
+            console.log(st);
+        })
+    })
+
 }
 
 randBtn = document.getElementById('random-number');
